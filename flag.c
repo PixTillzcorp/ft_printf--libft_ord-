@@ -1,9 +1,9 @@
 #include "ft_printf.h"
 
-int		flag_conv(const char **fmt, va_list *args, char *flag, int minw, int pre)
+int			flag_conv(const char **fmt, va_list *args, char *flag, int minw, int pre)
 {
-	char *lm;
-	char *ret;
+	char	*lm;
+	char	*ret;
 
 	lm = ft_strdup("");
 	if (ft_islm(**fmt))
@@ -30,9 +30,9 @@ int		flag_conv(const char **fmt, va_list *args, char *flag, int minw, int pre)
 	return (0);
 }
 
-int		flag_minw(const char **format)
+int			flag_minw(const char **format)
 {
-	int ret;
+	int		ret;
 
 	ret = 0;
 	if (!ft_isdigit(**format))
@@ -45,10 +45,10 @@ int		flag_minw(const char **format)
 	}
 }
 
-int		flag_pre(const char **format)
+int			flag_pre(const char **format)
 {
-	int pre;
-	char find;
+	int		pre;
+	char	find;
 
 	find = 0;
 	pre = 0;
@@ -65,7 +65,7 @@ int		flag_pre(const char **format)
 				*format += ft_strlen(ft_itoa(pre));
 			}
 			else
-				*format += ft_strlen(ft_itoa(ft_atoi(*format))); 
+				*format += ft_strlen(ft_itoa(ft_atoi(*format)));
 		}
 		else
 			pre = 0;
@@ -74,9 +74,9 @@ int		flag_pre(const char **format)
 	return (pre);
 }
 
-int		ft_isflag(const char format)
+int			ft_isflag(const char format)
 {
-	int ret;
+	int		ret;
 
 	ret = 0;
 	ret += (format == '#' ? 1 : 0);
@@ -87,9 +87,9 @@ int		ft_isflag(const char format)
 	return (ret);
 }
 
-char 	*flag_flag(const char **format)
+char		*flag_flag(const char **format)
 {
-	char *ret;
+	char	*ret;
 
 	ret = ft_strdup("");
 	while (ft_isflag(**format))

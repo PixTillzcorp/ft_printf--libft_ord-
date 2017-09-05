@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-char	*base_swap_bin(va_list *args, char *lm)
+char		*base_swap_bin(va_list *args, char *lm)
 {
 	t_types num;
 
@@ -15,7 +15,7 @@ char	*base_swap_bin(va_list *args, char *lm)
 		return (NULL);
 }
 
-char	*base_swap_sci(va_list *args, char *lm, int pre, char conv)
+char		*base_swap_sci(va_list *args, char *lm, int pre, char conv)
 {
 	t_types num;
 
@@ -26,13 +26,13 @@ char	*base_swap_sci(va_list *args, char *lm, int pre, char conv)
 		return (NULL);
 }
 
-int		chrct(va_list *args, char *flag, char *lm, int minw, char conv)
+int			chrct(va_list *args, char *flag, char *lm, int minw, char conv)
 {
 	t_types num;
-	int len;
+	int		len;
 
-	num.ll = va_arg(*args, long long);
 	len = 0;
+	num.ll = va_arg(*args, long long);
 	if (!ft_strchr(flag, '-'))
 		ft_putxchar((ft_strchr(flag, '0') ? '0' : ' '), minw - 1);
 	if (conv == 'C')
@@ -49,14 +49,14 @@ int		chrct(va_list *args, char *flag, char *lm, int minw, char conv)
 	return ((minw > 0 ? (minw + (len - 1)) : len));
 }
 
-int		string(char *str, char *flag, int minw, int pre)
+int			string(char *str, char *flag, int minw, int pre)
 {
-	int len;
-	int i;
-	int strl;
+	int		len;
+	int		i;
+	int		strl;
 
-	len = 0;
 	i = 0;
+	len = 0;
 	if (str == NULL)
 		str = ft_strdup("(null)");
 	strl = ft_strlen(str);
@@ -72,15 +72,15 @@ int		string(char *str, char *flag, int minw, int pre)
 	return (len);
 }
 
-int		wstring(wint_t *str, char *flag, int minw, int pre)
+int			wstring(wint_t *str, char *flag, int minw, int pre)
 {
-	int len;
-	int i;
-	int count;
-	int strl;
+	int		len;
+	int		i;
+	int		count;
+	int		strl;
 
-	len = 0;
 	i = 0;
+	len = 0;
 	count = 0;
 	if (!str)
 		return (string(NULL, flag, minw, pre));

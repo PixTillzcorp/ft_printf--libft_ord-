@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-char	*add_flag(char *ret, int minw, char *flag, char conv, int pre)
+char		*add_flag(char *ret, int minw, char *flag, char conv, int pre)
 {
 	if (!ret)
 		ret = ft_strdup("");
@@ -26,7 +26,7 @@ char	*add_flag(char *ret, int minw, char *flag, char conv, int pre)
 	return (ret = add_minw(ret, minw, flag, conv, pre));
 }
 
-char	*add_minw(char *ret, int minw, char *flag, char conv, int pre)
+char		*add_minw(char *ret, int minw, char *flag, char conv, int pre)
 {
 	while ((int)(ft_strlen(ret)) < minw)
 	{
@@ -52,10 +52,10 @@ char	*add_minw(char *ret, int minw, char *flag, char conv, int pre)
 	return (ret);
 }
 
-char	*add_bin_oct(char *str)
+char		*add_bin_oct(char *str)
 {
-	char *ret;
-	int i;
+	char	*ret;
+	int		i;
 
 	i = 0;
 	ret = ft_strdup("");
@@ -71,9 +71,9 @@ char	*add_bin_oct(char *str)
 	return (ft_strrev(ret));
 }
 
-char	*add_pre(char *ret, char conv, int pre)
+char		*add_pre(char *ret, char conv, int pre)
 {
-	int neg;
+	int		neg;
 
 	neg = (ft_strchr(ret, '-') != NULL ? 1 : 0);
 	if (pre < 0 || pre < (int)ft_strlen(ret))
@@ -97,10 +97,10 @@ char	*add_pre(char *ret, char conv, int pre)
 	return (ret);
 }
 
-char	*minw_decimal(char *ret, char *flag, int minw)
+char		*minw_decimal(char *ret, char *flag, int minw)
 {
-	int neg;
-	int esp;
+	int		neg;
+	int		esp;
 
 	neg = (ft_strchr(ret, '-') ? 1 : 0);
 	esp = (ft_strchr(flag, ' ') && !neg ? 1 : 0);

@@ -1,9 +1,9 @@
 #include "ft_printf.h"
 
-char	*decimal(va_list *args, char *lm, int pre, char conv)
+char		*decimal(va_list *args, char *lm, int pre, char conv)
 {
 	t_types num;
-	char *ret;
+	char	*ret;
 
 	num.ll = va_arg(*args, long long);
 	if (!lm)
@@ -28,10 +28,10 @@ char	*decimal(va_list *args, char *lm, int pre, char conv)
 	return ((!ft_strcmp(ret, "0") && !pre ? add_pre(ft_strdup(""), conv, pre) : add_pre(ret, conv, pre)));
 }
 
-char	*udecimal(va_list *args, char *lm, int pre, char conv)
+char		*udecimal(va_list *args, char *lm, int pre, char conv)
 {
 	t_types num;
-	char *ret;
+	char	*ret;
 
 	num.ll = va_arg(*args, long long);
 	if (!lm)
@@ -56,11 +56,11 @@ char	*udecimal(va_list *args, char *lm, int pre, char conv)
 	return ((!ft_strcmp(ret, "0") && !pre ? add_pre(ft_strdup(""), conv, pre) : add_pre(ret, conv, pre)));
 }
 
-char	*ptr(va_list *args, char *flag, int minw, int pre)
+char		*ptr(va_list *args, char *flag, int minw, int pre)
 {
 	t_types num;
-	char *ret;
-	char *tmp;
+	char	*ret;
+	char	*tmp;
 
 	num.ptr = va_arg(*args, void *);
 	ret = ft_ptr_to_hex(num.ptr);
@@ -86,7 +86,7 @@ char	*ptr(va_list *args, char *flag, int minw, int pre)
 	return (add_pre(ret, 'p', pre));
 }
 
-char	*base_swap_oct(va_list *args, char *lm, int pre, char conv, char *flag)
+char		*base_swap_oct(va_list *args, char *lm, int pre, char conv, char *flag)
 {
 	t_types num;
 
@@ -113,7 +113,7 @@ char	*base_swap_oct(va_list *args, char *lm, int pre, char conv, char *flag)
 		return (NULL);
 }
 
-char	*base_swap_hex(va_list *args, char *lm, int pre, char conv)
+char		*base_swap_hex(va_list *args, char *lm, int pre, char conv)
 {
 	t_types num;
 

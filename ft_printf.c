@@ -12,13 +12,13 @@
 
 #include "ft_printf.h"
 
-int		choice(const char **format, va_list *args)
+int			choice(const char **format, va_list *args)
 {
-	char *flag;
-	char *temp;
-	int minw;
-	int len;
-	int pre;
+	char	*flag;
+	char	*temp;
+	int		minw;
+	int		len;
+	int		pre;
 
 	flag = flag_flag(format);
 	minw = flag_minw(format);
@@ -35,9 +35,9 @@ int		choice(const char **format, va_list *args)
 	return (len);
 }
 
-char	*join_flag(char *dest, char *str)
+char		*join_flag(char *dest, char *str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (str[i])
@@ -49,9 +49,9 @@ char	*join_flag(char *dest, char *str)
 	return (dest);
 }
 
-int		no_conv(const char **format, char *flag, int minw)
+int			no_conv(const char **format, char *flag, int minw)
 {
-	int minus;
+	int		minus;
 
 	minus = (!ft_strchr(flag, '-') ? 0 : 1);
 	if (minw > 0)
@@ -66,10 +66,10 @@ int		no_conv(const char **format, char *flag, int minw)
 		return (0);
 }
 
-int		check_wsc(va_list args, const char *format)
+int			check_wsc(va_list args, const char *format)
 {
-	char *lm;
-	int len;
+	char	*lm;
+	int		len;
 
 	lm = ft_strdup("");
 	while (*format)
@@ -102,11 +102,11 @@ int		check_wsc(va_list args, const char *format)
 	return (1);
 }
 
-int		ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	va_list check;
 	va_list args;
-	int len;
+	int		len;
 
 	len = 0;
 	va_start (check, format);

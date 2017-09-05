@@ -1,8 +1,8 @@
 #include "ft_printf.h"
 
-void	flag_lm(const char **fmt, char **ret)
+void		flag_lm(const char **fmt, char **ret)
 {
-	char flag;
+	char	flag;
 
 	flag = **fmt;
 	*ret = ft_chrjoin_free(*ret, flag, 1);
@@ -16,9 +16,9 @@ void	flag_lm(const char **fmt, char **ret)
 		(*fmt)++;
 }
 
-int		ft_isconv(const char tag)
+int			ft_isconv(const char tag)
 {
-	int ret;
+	int		ret;
 
 	ret = 0;
 	ret += (tag == 'd' || tag == 'D' ? 1 : 0);
@@ -33,9 +33,9 @@ int		ft_isconv(const char tag)
 	return (ret);
 }
 
-int		ft_islm(const char tag)
+int			ft_islm(const char tag)
 {
-	int ret;
+	int		ret;
 
 	ret = 0;
 	ret += (tag == 'l' || tag == 'h' ? 1 : 0);
@@ -43,10 +43,10 @@ int		ft_islm(const char tag)
 	return (ret);
 }
 
-int		convert(va_list *args, char *flag, int minw, int pre, char *lm)
+int			convert(va_list *args, char *flag, int minw, int pre, char *lm)
 {
-	char *ret;
-	char conv;
+	char	*ret;
+	char	conv;
 
 	conv = recup_conv(flag);
 	if (conv == 'i' || conv == 'd' || conv == 'D')
@@ -80,10 +80,10 @@ int		convert(va_list *args, char *flag, int minw, int pre, char *lm)
 	return ((!ret ? 0 : ft_strlen(ret)));
 }
 
-char	recup_conv(char *flag)
+char		recup_conv(char *flag)
 {
-	char ret;
-	int i;
+	char	ret;
+	int		i;
 
 	i = 0;
 	while (flag[i])
