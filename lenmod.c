@@ -43,39 +43,39 @@ int			ft_islm(const char tag)
 	return (ret);
 }
 
-int			convert(va_list *args, char *flag, int minw, int pre, char *lm)
+int			convert(va_list *args, char *flag, char *lm, int *tab)
 {
 	char	*ret;
 	char	conv;
 
 	conv = recup_conv(flag);
 	if (conv == 'i' || conv == 'd' || conv == 'D')
-		ret = decimal(args, lm, pre, conv);
+		ret = decimal(args, lm, tab[1], conv);
 	else if (conv == 'c' || conv == 'C')
-		return (chrct(args, flag, lm, minw, conv));
+		return (chrct(args, flag, lm, tab[0], conv));
 	else if (conv == 'u' || conv == 'U')
-		ret = udecimal(args, lm, pre, conv);
+		ret = udecimal(args, lm, tab[1], conv);
 	else if (conv == 's' || conv == 'S')
 	{
 		if (conv == 's' && !lm)
-			return (string(va_arg(*args, char *), flag, minw, pre));
-		return (wstring(va_arg(*args, wint_t *), flag, minw, pre));
+			return (string(va_arg(*args, char *), flag, tab[0], tab[1]));
+		return (wstring(va_arg(*args, wint_t *), flag, tab[0], tab[1]));
 	}
 	else if (conv == 'o' || conv == 'O')
-		ret = base_swap_oct(args, lm, pre, conv, flag);
+		ret = base_swap_oct(args, lm, tab[1], conv, flag);
 	else if (conv == 'x' || conv == 'X')
-		ret = base_swap_hex(args, lm, pre, conv);
+		ret = base_swap_hex(args, lm, tab[1], conv);
 	else if (conv == 'e' || conv == 'E')
-		ret = base_swap_sci(args, lm, pre, conv);
+		ret = base_swap_sci(args, lm, tab[1], conv);
 	else if (conv == 'p')
-		ret = ptr(args, flag, minw, pre);
+		ret = ptr(args, flag, tab[0], tab[1]);
 	else if (conv == 'b')
 		ret = base_swap_bin(args, lm);
 	else if (conv == 'H')
 		return (ft_helpflag());
 	else
 		return (0);
-	ret = add_flag(ret, minw, flag, conv, pre);
+	ret = add_flag(ret, flag, conv, tab);
 	ft_putstr(ret);
 	return ((!ret ? 0 : ft_strlen(ret)));
 }

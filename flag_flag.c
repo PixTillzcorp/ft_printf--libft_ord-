@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-char		*add_flag(char *ret, int minw, char *flag, char conv, int pre)
+char		*add_flag(char *ret, char *flag, char conv, int *tab)
 {
 	if (!ret)
 		ret = ft_strdup("");
@@ -18,27 +18,27 @@ char		*add_flag(char *ret, int minw, char *flag, char conv, int pre)
 	}
 	if (conv == 'd' || conv == 'D' || conv == 'i' || conv == 'e' || conv == 'E')
 	{
-		if (ft_strchr(flag, '+') && !ft_strchr(ret, '-') && (ft_strchr(flag, '-') || !ft_strchr(flag, '0') || minw < (int)ft_strlen(ret)))
+		if (ft_strchr(flag, '+') && !ft_strchr(ret, '-') && (ft_strchr(flag, '-') || !ft_strchr(flag, '0') || tab[0] < (int)ft_strlen(ret)))
 			ret = ft_strjoin_free("+", ret, 'r');
-		else if (ft_strchr(flag, ' ') && !ft_strchr(ret, '-') && minw < (int)ft_strlen(ret))
+		else if (ft_strchr(flag, ' ') && !ft_strchr(ret, '-') && tab[0] < (int)ft_strlen(ret))
 			ret = ft_strjoin_free(" ", ret, 'r');
 	}
-	return (ret = add_minw(ret, minw, flag, conv, pre));
+	return (ret = add_minw(ret, flag, conv, tab));
 }
 
-char		*add_minw(char *ret, int minw, char *flag, char conv, int pre)
+char		*add_minw(char *ret, char *flag, char conv, int *tab)
 {
-	while ((int)(ft_strlen(ret)) < minw)
+	while ((int)(ft_strlen(ret)) < tab[0])
 	{
 		if (ft_strchr(flag, '-'))
 			ret = ft_chrjoin_free(ret, ' ', 1);
-		else if (ft_strchr(flag, '0') && pre < 0)
+		else if (ft_strchr(flag, '0') && tab[1] < 0)
 		{
-			if (ft_strchr(flag, '#') && (int)(ft_strlen(ret) + 2) == minw &&\
+			if (ft_strchr(flag, '#') && (int)(ft_strlen(ret) + 2) == tab[0] &&\
 				(conv == 'x' || conv == 'X' ) && ft_strcmp(ret, "0"))
 				ret = ft_strjoin_free((conv == 'x' ? "0x" : "0X"), ret, 'r');
 			else if ((conv == 'd' || conv == 'D'))
-				ret = minw_decimal(ret, flag, minw);
+				ret = minw_decimal(ret, flag, tab[0]);
 			else
 				ret = ft_strjoin_free("0", ret, 'r');
 		}

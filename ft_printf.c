@@ -16,22 +16,21 @@ int			choice(const char **format, va_list *args)
 {
 	char	*flag;
 	char	*temp;
-	int		minw;
+	int		tab[2];
 	int		len;
-	int		pre;
 
 	flag = flag_flag(format);
-	minw = flag_minw(format);
+	tab[0] = flag_minw(format);
 	if (!(temp = flag_flag(format)))
 		free(temp);
 	else
 		flag = join_flag(flag, temp);
-	pre = flag_pre(format);
+	tab[1] = flag_pre(format);
 	if (!(temp = flag_flag(format)))
 		free(temp);
 	else
 		flag = join_flag(flag, temp);
-	len = flag_conv(format, args, flag, minw, pre);
+	len = flag_conv(format, args, flag, tab);
 	return (len);
 }
 
@@ -77,14 +76,12 @@ int			check_wsc(va_list args, const char *format)
 		if (*format == '%')
 		{
 			format++;
-			flag_flag(&format);
-			flag_minw(&format);
+			(flag_flag(&format) ? flag_minw(&format) : flag_minw(&format));
 			flag_flag(&format);
 			if (flag_pre(&format) > 0)
 				return (1);
 			flag_flag(&format);
-			if (ft_islm(*format))
-				flag_lm(&format, &lm);
+			(ft_islm(*format) ? flag_lm(&format, &lm) : 0);
 			len = (!ft_strcmp(lm, "l") ? 1 : 0);
 			if (((*format == 'c' && len) || (*format == 'C')\
 			|| (*format == 's' && len) || (*format == 'S')))

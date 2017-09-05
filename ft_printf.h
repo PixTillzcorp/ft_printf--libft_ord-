@@ -60,15 +60,15 @@ int                 no_conv(const char **format, char *flag, int minw);
 char                *ptr(va_list *args, char *flag, int minw, int pre);
 int                 wstring(wint_t *str, char *flag, int minw, int pre);
 char                *decimal(va_list *args, char *lm, int pre, char conv);
-char		        *udecimal(va_list *args, char *lm, int pre, char conv);
+char                *add_flag(char *ret, char *flag, char conv, int *tab);
+char                *add_minw(char *ret, char *flag, char conv, int *tab);
+int                 convert(va_list *args, char *flag, char *lm, int *tab);
+char                *udecimal(va_list *args, char *lm, int pre, char conv);
 char                *base_swap_hex(va_list *args, char *lm, int pre, char conv);
 char                *base_swap_sci(va_list *args, char *lm, int pre, char conv);
+int                 flag_conv(const char **fmt, va_list *args, char *flag, int *tab);
 //too much args :(
-char                *add_flag(char *ret, int minw, char *flag, char conv, int pre);
-char                *add_minw(char *ret, int minw, char *flag, char conv, int pre);
-int                 convert(va_list *args, char *flag, int minw, int pre, char *lm);
 int                 chrct(va_list *args, char *flag, char *lm, int minw, char conv);
 char                *base_swap_oct(va_list *args, char *lm, int pre, char conv, char *flag);
-int                 flag_conv(const char **fmt, va_list *args, char *flag, int minw, int pre);
 
 #endif

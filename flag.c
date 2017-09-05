@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int			flag_conv(const char **fmt, va_list *args, char *flag, int minw, int pre)
+int			flag_conv(const char **fmt, va_list *args, char *flag, int *tab)
 {
 	char	*lm;
 	char	*ret;
@@ -16,18 +16,16 @@ int			flag_conv(const char **fmt, va_list *args, char *flag, int minw, int pre)
 	{
 		flag = ft_chrjoin_free(flag, **fmt, 1);
 		(*fmt)++;
-		return (convert(args, flag, minw, pre, lm));
+		return (convert(args, flag, lm, tab));
 	}
 	else if (**fmt == '%')
 	{
-		ret = add_flag(ft_strdup("%"), minw, flag, '%', pre);
+		ret = add_flag(ft_strdup("%"), flag, '%', tab);
 		ft_putstr(ret);
 		(*fmt)++;
 		return (ft_strlen(ret));
 	}
-	else
-		return (no_conv(fmt, flag, minw));
-	return (0);
+	return (no_conv(fmt, flag, tab[0]));
 }
 
 int			flag_minw(const char **format)
