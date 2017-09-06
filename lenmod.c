@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lenmod.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heinfalt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/06 01:28:08 by heinfalt          #+#    #+#             */
+/*   Updated: 2017/09/06 01:28:09 by heinfalt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void		flag_lm(const char **fmt, char **ret)
@@ -48,35 +60,26 @@ int			convert(va_list *args, char *flag, char *lm, int *tab)
 	char	*ret;
 	char	conv;
 
+	ret = NULL;
 	conv = recup_conv(flag);
 	if (conv == 'i' || conv == 'd' || conv == 'D')
 		ret = decimal(args, lm, tab[1], conv);
-	else if (conv == 'c' || conv == 'C')
-		return (chrct(args, flag, lm, tab[0], conv));
 	else if (conv == 'u' || conv == 'U')
 		ret = udecimal(args, lm, tab[1], conv);
+	else if (conv == 'c' || conv == 'C')
+		return (chrct(args, flag, lm, tab[0], conv));
 	else if (conv == 's' || conv == 'S')
 	{
 		if (conv == 's' && !lm)
 			return (string(va_arg(*args, char *), flag, tab[0], tab[1]));
 		return (wstring(va_arg(*args, wint_t *), flag, tab[0], tab[1]));
 	}
-	else if (conv == 'o' || conv == 'O')
-		ret = base_swap_oct(args, lm, tab[1], conv, flag);
-	else if (conv == 'x' || conv == 'X')
-		ret = base_swap_hex(args, lm, tab[1], conv);
-	else if (conv == 'e' || conv == 'E')
-		ret = base_swap_sci(args, lm, tab[1], conv);
-	else if (conv == 'p')
-		ret = ptr(args, flag, tab[0], tab[1]);
-	else if (conv == 'b')
-		ret = base_swap_bin(args, lm);
-	else if (conv == 'H')
-		return (ft_helpflag());
-	else
-		return (0);
+	else if (ft_isconv(conv))
+		return(other_conv(args, ft_chrjoin_free(flag, conv, 0), lm, tab));
 	ret = add_flag(ret, flag, conv, tab);
 	ft_putstr(ret);
+	if (flag)
+		ft_memdel((void **)&flag);
 	return ((!ret ? 0 : ft_strlen(ret)));
 }
 

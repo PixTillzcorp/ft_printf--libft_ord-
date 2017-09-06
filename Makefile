@@ -6,9 +6,9 @@ NAME = libftprintf.a
 
 CC = gcc
 
-SRCC = flag.c flag_flag.c ft_printf.c lenmod.c operation.c operation_2.c other.c
+SRCC = flag.c flag_flag.c ft_printf.c lenmod.c operation.c operation_2.c other.c check_wsc.c
 
-SRCO = flag.o flag_flag.o ft_printf.o lenmod.o operation.o operation_2.o other.o
+SRCO = flag.o flag_flag.o ft_printf.o lenmod.o operation.o operation_2.o other.o check_wsc.o
 
 LIB_SRCO = 	ft_itoa.o ft_atoi.o ft_litoa.o ft_dbltoa.o ft_ulitoa.o			\
 			ft_initmod.o ft_initlmod.o ft_bin_to_dec.o ft_dec_to_bin.o		\

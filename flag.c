@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flag.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heinfalt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/06 01:27:26 by heinfalt          #+#    #+#             */
+/*   Updated: 2017/09/06 01:27:39 by heinfalt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int			flag_conv(const char **fmt, va_list *args, char *flag, int *tab)
@@ -9,7 +21,7 @@ int			flag_conv(const char **fmt, va_list *args, char *flag, int *tab)
 	if (ft_islm(**fmt))
 		flag_lm(fmt, &lm);
 	else
-		lm = NULL;
+		ft_memdel((void **)&lm);
 	if (ft_isflag(**fmt))
 		flag = join_flag(flag, flag_flag(fmt));
 	if (ft_isconv(**fmt))

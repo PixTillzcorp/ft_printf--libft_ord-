@@ -65,40 +65,6 @@ int			no_conv(const char **format, char *flag, int minw)
 		return (0);
 }
 
-int			check_wsc(va_list args, const char *format)
-{
-	char	*lm;
-	int		len;
-
-	lm = ft_strdup("");
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			format++;
-			(flag_flag(&format) ? flag_minw(&format) : flag_minw(&format));
-			flag_flag(&format);
-			if (flag_pre(&format) > 0)
-				return (1);
-			flag_flag(&format);
-			(ft_islm(*format) ? flag_lm(&format, &lm) : 0);
-			len = (!ft_strcmp(lm, "l") ? 1 : 0);
-			if (((*format == 'c' && len) || (*format == 'C')\
-			|| (*format == 's' && len) || (*format == 'S')))
-			{
-				if ((len = (*format == 'C' || *format == 'c' ? ft_is_wchar(va_arg(args, wint_t)) : ft_is_wstring(va_arg(args, wint_t *)))) == 1 && MB_CUR_MAX == 1)
-					return (0);
-			}
-			else if (*format == '%')
-				format++;
-			else
-				va_arg(args, void *);
-		}
-		format++;
-	}
-	return (1);
-}
-
 int			ft_printf(const char *format, ...)
 {
 	va_list check;
@@ -106,11 +72,11 @@ int			ft_printf(const char *format, ...)
 	int		len;
 
 	len = 0;
-	va_start (check, format);
+	va_start(check, format);
 	if (!check_wsc(check, ft_strdup(format)))
 		return (-1);
 	va_end(check);
-	va_start (args, format);
+	va_start(args, format);
 	while (*format)
 	{
 		if (*format == '%')
