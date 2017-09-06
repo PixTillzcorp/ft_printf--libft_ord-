@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_wcharlen.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heinfalt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/06 01:02:40 by heinfalt          #+#    #+#             */
+/*   Updated: 2017/09/06 01:02:41 by heinfalt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft.h"
 
 static char	*choose_type(unsigned int len)
@@ -23,7 +35,7 @@ static char	*choose_type(unsigned int len)
 		return ("0xxxxxxx");
 }
 
-static char **combine(char *std, char *nbr)
+static char	**combine(char *std, char *nbr)
 {
 	int		i;
 	int		j;
@@ -53,7 +65,8 @@ size_t		ft_wcharlen(wint_t c)
 	char	*ret;
 	size_t	i;
 
-	type = choose_type(ft_strlen(stock = ft_dec_to_bin((unsigned int)(c))));
+	stock = ft_dec_to_bin((unsigned int)(c));
+	type = choose_type(ft_strlen(stock));
 	display = combine(ft_strrev(type), ft_strrev(stock));
 	free(stock);
 	ret = ft_strdup("");

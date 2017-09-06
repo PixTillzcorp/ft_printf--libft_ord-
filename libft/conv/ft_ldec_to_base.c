@@ -12,7 +12,8 @@
 
 #include "../libft.h"
 
-char					*ft_ldec_to_base(unsigned long long nbr, char *flag, long long base, int pre)
+char					*ft_ldec_to_base(unsigned long long nbr,\
+						char *flag, long long base, int pre)
 {
 	unsigned long long	rest;
 	char				*ret;

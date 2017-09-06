@@ -12,7 +12,8 @@
 
 #include "../libft.h"
 
-unsigned long long			ft_initlmod(unsigned long long nbr, unsigned long long mod)
+unsigned long long			ft_initlmod(unsigned long long nbr,\
+							unsigned long long mod)
 {
 	unsigned long long	check;
 	unsigned long long	i;

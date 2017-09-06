@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ldec_to_hex.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heinfalt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/06 00:54:51 by heinfalt          #+#    #+#             */
+/*   Updated: 2017/09/06 00:54:53 by heinfalt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft.h"
 
-char					*ft_ldec_to_hex(unsigned long long nbr, char type, int pre)
+char					*ft_ldec_to_hex(unsigned long long nbr,\
+						char type, int pre)
 {
 	char				*ret;
 	int					rest;

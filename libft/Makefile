@@ -117,11 +117,9 @@ SRCC_CONV = ft_itoa.c ft_atoi.c ft_litoa.c ft_dbltoa.c ft_ulitoa.c			\
 			ft_dec_to_base.c ft_ldec_to_bin.c ft_ldec_to_hex.c				\
 			ft_ldec_to_base.c
 
-SRCO_OTHR =	ft_charswap.o ft_pow.o ft_swap.o ft_wstrlen.o ft_wcharlen.o		\
-			ft_helpflag.o
+SRCO_OTHR =	ft_charswap.o ft_pow.o ft_swap.o ft_wstrlen.o ft_wcharlen.o
 
-SRCC_OTHR = ft_charswap.c ft_pow.c ft_swap.c ft_wstrlen.c ft_wcharlen.c		\
-			ft_helpflag.c
+SRCC_OTHR = ft_charswap.c ft_pow.c ft_swap.c ft_wstrlen.c ft_wcharlen.c
 
 #Compiler flags
 

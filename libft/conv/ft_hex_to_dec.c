@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_hex_to_dec.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heinfalt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/06 00:50:14 by heinfalt          #+#    #+#             */
+/*   Updated: 2017/09/06 00:50:18 by heinfalt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft.h"
 
 static int		hex_nbr(const int c, const char conv)
@@ -37,7 +49,8 @@ unsigned int	ft_hex_to_dec(const char *str, const char conv)
 	{
 		if (hex_nbr(str[i], conv))
 		{
-			nbr += ft_pow(16, len - 1) * (ft_isalpha(str[i]) ? str[i] - 55 : str[i] - 48);
+			nbr += ft_pow(16, len - 1) * (ft_isalpha(str[i]) ?\
+			str[i] - 55 : str[i] - 48);
 			len--;
 			i++;
 		}

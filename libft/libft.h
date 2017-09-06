@@ -88,7 +88,7 @@ char				**ft_strsplit(char const *s, char c);
 char				*ft_strcpy(char *dest, const char *src);
 char				*ft_strcat(char *dest, const char *src);
 char				*ft_strmap(char const *s, char (*f)(char));
-char				*ft_dec_to_base(unsigned int nbr, char *flag, int base, int pre);
+char				*ft_dec_to_base(unsigned int nbr, char *flag, int b, int p);
 char				*ft_dec_to_hex(unsigned int nbr, char type, int pre);
 char				*ft_dec_to_bin(unsigned int nbr);
 char				*ft_strjoin(char const *s1, char const *s2);
@@ -98,7 +98,8 @@ char				*ft_dec_to_sci(double nbr, char type, int pre);
 char				*ft_strjoin_free(char *s1, char *s2, char flag);
 char				*ft_chrjoin_free(char *s, const char c, int flag);
 char				*ft_strncat(char *dest, const char *src, size_t n);
-char				*ft_ldec_to_base(unsigned long long nbr, char *flag, long long base, int pre);
+char				*ft_ldec_to_base(unsigned long long nbr, char *flag,\
+					long long base, int pre);
 char				*ft_ldec_to_hex(unsigned long long nbr, char type, int pre);
 char				*ft_ldec_to_bin(unsigned long long nbr);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);

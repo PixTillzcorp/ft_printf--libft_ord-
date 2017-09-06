@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putwchar.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heinfalt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/06 00:59:09 by heinfalt          #+#    #+#             */
+/*   Updated: 2017/09/06 00:59:14 by heinfalt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft.h"
 
-static char	*choose_type(unsigned int len)
+static char		*choose_type(unsigned int len)
 {
 	if (len > 7)
 	{
@@ -23,10 +35,10 @@ static char	*choose_type(unsigned int len)
 		return ("0xxxxxxx");
 }
 
-static char **combine(char *std, char *nbr)
+static char		**combine(char *std, char *nbr)
 {
-	int i;
-	int j;
+	int			i;
+	int			j;
 
 	i = 0;
 	j = 0;
@@ -45,15 +57,16 @@ static char **combine(char *std, char *nbr)
 	return (ft_strsplit(std, ' '));
 }
 
-int	ft_putwchar(wint_t c)
+int				ft_putwchar(wint_t c)
 {
-	char *type;
-	char *stock;
-	char **display;
-	char *ret;
-	int i;
+	char		*type;
+	char		*stock;
+	char		**display;
+	char		*ret;
+	int			i;
 
-	type = choose_type(ft_strlen(stock = ft_dec_to_bin((unsigned int)(c))));
+	stock = ft_dec_to_bin((unsigned int)(c));
+	type = choose_type(ft_strlen(stock));
 	display = combine(ft_strrev(type), ft_strrev(stock));
 	free(stock);
 	ret = ft_strdup("");
