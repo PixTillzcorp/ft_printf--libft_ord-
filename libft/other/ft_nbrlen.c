@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_wstring.c                                    :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heinfalt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/06 00:56:01 by heinfalt          #+#    #+#             */
-/*   Updated: 2017/09/06 00:56:18 by heinfalt         ###   ########.fr       */
+/*   Created: 2017/09/08 06:12:05 by heinfalt          #+#    #+#             */
+/*   Updated: 2017/09/08 06:12:06 by heinfalt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int	ft_is_wstring(wint_t *str)
+int		ft_nbrlen(int nbr)
 {
-	int i;
+	int count;
 
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
+	count = 1;
+	while (nbr != 0)
 	{
-		if (str[i++] - 127 > 0)
-			return (1);
+		nbr /= 10;
+		if (nbr != 0)
+			count++;
+		else
+			break;
 	}
-	return (0);
+	return (count);
 }

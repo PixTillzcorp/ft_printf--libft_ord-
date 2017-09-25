@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_wstring.c                                    :+:      :+:    :+:   */
+/*   ft_ret_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heinfalt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/06 00:56:01 by heinfalt          #+#    #+#             */
-/*   Updated: 2017/09/06 00:56:18 by heinfalt         ###   ########.fr       */
+/*   Created: 2017/09/08 02:05:14 by heinfalt          #+#    #+#             */
+/*   Updated: 2017/09/08 02:05:16 by heinfalt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int	ft_is_wstring(wint_t *str)
+int		ft_ret_free(void *data, int ret)
 {
-	int i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-	{
-		if (str[i++] - 127 > 0)
-			return (1);
-	}
-	return (0);
+	ft_memdel(&data);
+	return (ret);
 }

@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_wstring.c                                    :+:      :+:    :+:   */
+/*   ft_strdup_free.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heinfalt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/06 00:56:01 by heinfalt          #+#    #+#             */
-/*   Updated: 2017/09/06 00:56:18 by heinfalt         ###   ########.fr       */
+/*   Created: 2017/09/07 02:33:29 by heinfalt          #+#    #+#             */
+/*   Updated: 2017/09/07 02:33:30 by heinfalt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int	ft_is_wstring(wint_t *str)
+char		*ft_strdup_free(char *str, int f)
 {
-	int i;
+	char	*cpy;
+	int		i;
 
 	i = 0;
-	if (!str)
-		return (0);
+	cpy = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1));
+	if (cpy == NULL)
+		return (NULL);
 	while (str[i])
 	{
-		if (str[i++] - 127 > 0)
-			return (1);
+		cpy[i] = str[i];
+		i++;
 	}
-	return (0);
+	cpy[i] = '\0';
+	if (f && str)
+		free(str);
+	return (cpy);
 }

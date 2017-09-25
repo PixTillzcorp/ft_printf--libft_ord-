@@ -19,14 +19,14 @@ int			choice(const char **format, va_list *args)
 	int		tab[2];
 	int		len;
 
-	flag = flag_flag(format);
+	flag = flag_flag(format, 0);
 	tab[0] = flag_minw(format);
-	if (!(temp = flag_flag(format)))
+	if (!(temp = flag_flag(format, 0)))
 		free(temp);
 	else
 		flag = join_flag(flag, temp);
 	tab[1] = flag_pre(format);
-	if (!(temp = flag_flag(format)))
+	if (!(temp = flag_flag(format, 0)))
 		free(temp);
 	else
 		flag = join_flag(flag, temp);
@@ -45,6 +45,7 @@ char		*join_flag(char *dest, char *str)
 			dest = ft_chrjoin_free(dest, str[i], 1);
 		i++;
 	}
+	free(str);
 	return (dest);
 }
 
@@ -67,15 +68,17 @@ int			no_conv(const char **format, char *flag, int minw)
 
 int			ft_printf(const char *format, ...)
 {
-	va_list check;
 	va_list args;
+	char	*tmp;
 	int		len;
 
 	len = 0;
-	va_start(check, format);
-	if (!check_wsc(check, ft_strdup(format)))
+	tmp = ft_strdup(format);
+	va_start(args, format);
+	if (!check_wsc(args, tmp))
 		return (-1);
-	va_end(check);
+	va_end(args);
+	free(tmp);
 	va_start(args, format);
 	while (*format)
 	{

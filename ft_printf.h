@@ -17,6 +17,8 @@
 # include <stdarg.h>
 # include <wchar.h>
 
+# define O_S (ft_strchr(flag, '0') ? '0' : ' ')
+
 typedef union		u_types
 {
 	int				d;
@@ -47,10 +49,10 @@ int					ft_isflag(const char format);
 int					flag_pre(const char **format);
 int					flag_minw(const char **format);
 int					pre_wstr(wint_t *str, int pre);
-char				*flag_flag(const char **format);
 char				*join_flag(char *dest, char *str);
 int					ft_printf(const char *format, ...);
 void				flag_lm(const char **fmt, char **ret);
+char				*flag_flag(const char **format, int f);
 char				*add_pre(char *ret, char conv, int pre);
 char				*base_swap_bin(va_list *args, char *lm);
 int					choice(const char **format, va_list *args);
@@ -68,10 +70,9 @@ char				*base_swap_hex(va_list *args, char *lm, int pre, char conv);
 char				*base_swap_sci(va_list *args, char *lm, int pre, char conv);
 int					flag_conv(const char **fmt, va_list *args,\
 					char *flag, int *tab);
-int					chrct(va_list *args, char *flag, char *lm,\
-					int minw, char conv);
-char				*base_swap_oct(va_list *args, char *lm, int pre,\
-					char conv, char *flag);
+int					chrct(va_list *args, char *flag, char *lm, int minw);
+char				*base_swap_oct(va_list *args, char *flag,\
+					char *lm, int pre);
 int					check_wsc(va_list args, const char *format);
 int					other_conv(va_list *args, char *flag, char *lm, int *tab);
 

@@ -67,7 +67,7 @@ int			convert(va_list *args, char *flag, char *lm, int *tab)
 	else if (conv == 'u' || conv == 'U')
 		ret = udecimal(args, lm, tab[1], conv);
 	else if (conv == 'c' || conv == 'C')
-		return (chrct(args, flag, lm, tab[0], conv));
+		return (chrct(args, ft_chrjoin_free(flag, conv, 0), lm, tab[0]));
 	else if (conv == 's' || conv == 'S')
 	{
 		if (conv == 's' && !lm)
@@ -75,12 +75,12 @@ int			convert(va_list *args, char *flag, char *lm, int *tab)
 		return (wstring(va_arg(*args, wint_t *), flag, tab[0], tab[1]));
 	}
 	else if (ft_isconv(conv))
-		return(other_conv(args, ft_chrjoin_free(flag, conv, 0), lm, tab));
+		return (other_conv(args, ft_chrjoin_free(flag, conv, 0), lm, tab));
 	ret = add_flag(ret, flag, conv, tab);
 	ft_putstr(ret);
 	if (flag)
 		ft_memdel((void **)&flag);
-	return ((!ret ? 0 : ft_strlen(ret)));
+	return ((!ret ? 0 : ft_ret_free(ret, ft_strlen(ret))));
 }
 
 char		recup_conv(char *flag)

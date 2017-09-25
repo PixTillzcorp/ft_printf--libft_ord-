@@ -23,7 +23,7 @@ int			flag_conv(const char **fmt, va_list *args, char *flag, int *tab)
 	else
 		ft_memdel((void **)&lm);
 	if (ft_isflag(**fmt))
-		flag = join_flag(flag, flag_flag(fmt));
+		flag = join_flag(flag, flag_flag(fmt, 0));
 	if (ft_isconv(**fmt))
 	{
 		flag = ft_chrjoin_free(flag, **fmt, 1);
@@ -72,14 +72,14 @@ int			flag_pre(const char **format)
 			if (!find)
 			{
 				pre = (ft_atoi(*format) <= 0 ? 0 : ft_atoi(*format));
-				*format += ft_strlen(ft_itoa(pre));
+				*format += ft_nbrlen(pre);
 			}
 			else
-				*format += ft_strlen(ft_itoa(ft_atoi(*format)));
+				*format += ft_nbrlen(ft_atoi(*format));
 		}
 		else
 			pre = 0;
-		find = (!find ? 1 : 1);
+		find = 1;
 	}
 	return (pre);
 }
@@ -97,7 +97,7 @@ int			ft_isflag(const char format)
 	return (ret);
 }
 
-char		*flag_flag(const char **format)
+char		*flag_flag(const char **format, int f)
 {
 	char	*ret;
 
@@ -112,5 +112,8 @@ char		*flag_flag(const char **format)
 			(*format)++;
 		}
 	}
-	return (ret);
+	if (!f)
+		return (ret);
+	free(ret);
+	return (NULL);
 }

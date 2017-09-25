@@ -37,7 +37,8 @@ char		*decimal(va_list *args, char *lm, int pre, char conv)
 		ret = ft_litoa((long long)num.imt);
 	else if (!ft_strcmp(lm, "z"))
 		ret = ft_litoa((long long)num.z);
-	return ((!ft_strcmp(ret, "0") && !pre ? add_pre(ft_strdup(""), conv, pre) : add_pre(ret, conv, pre)));
+	return (add_pre((!ft_strcmp(ret, "0") && !pre ? ft_strchange(ret,\
+	ft_strdup("")) : ret), conv, pre));
 }
 
 char		*udecimal(va_list *args, char *lm, int pre, char conv)
@@ -65,14 +66,14 @@ char		*udecimal(va_list *args, char *lm, int pre, char conv)
 		ret = ft_ulitoa((unsigned long long)num.imt);
 	else if (!ft_strcmp(lm, "z"))
 		ret = ft_ulitoa((unsigned long long)num.z);
-	return ((!ft_strcmp(ret, "0") && !pre ? add_pre(ft_strdup(""), conv, pre) : add_pre(ret, conv, pre)));
+	return (add_pre((!ft_strcmp(ret, "0") && !pre ? ft_strchange(ret,\
+	ft_strdup("")) : ret), conv, pre));
 }
 
 char		*ptr(va_list *args, char *flag, int minw, int pre)
 {
 	t_types num;
 	char	*ret;
-	char	*tmp;
 
 	num.ptr = va_arg(*args, void *);
 	ret = ft_ptr_to_hex(num.ptr);
@@ -80,17 +81,17 @@ char		*ptr(va_list *args, char *flag, int minw, int pre)
 	if (minw > (int)ft_strlen(ret))
 	{
 		if (ft_strchr(flag, '0') && !ft_strchr(flag, '-'))
-		{
-			tmp = ft_strdup(ret + 2);
-			free(ret);
-			ret = tmp;
-		}
+			ret = ft_strdup(ret + 2);
 		while (minw > (int)ft_strlen(ret))
 		{
-			if (minw - 2 == (int)ft_strlen(ret) && ft_strchr(flag, '0') && !ft_strchr(flag, '-'))
+			if (minw - 2 == (int)ft_strlen(ret) && ft_strchr(flag, '0')\
+			&& !ft_strchr(flag, '-'))
 				ret = ft_strjoin_free("0x", ret, 'r');
 			else if (!ft_strchr(flag, '-'))
-				ret = ft_strjoin_free((ft_strchr(flag, '0') ? "0" : " "), ret, 'r');
+			{
+				ret = ft_strjoin_free((ft_strchr(flag, '0') ?\
+				"0" : " "), ret, 'r');
+			}
 			else
 				ret = ft_strjoin_free(ret, " ", 'l');
 		}
@@ -98,10 +99,12 @@ char		*ptr(va_list *args, char *flag, int minw, int pre)
 	return (add_pre(ret, 'p', pre));
 }
 
-char		*base_swap_oct(va_list *args, char *lm, int pre, char conv, char *flag)
+char		*base_swap_oct(va_list *args, char *flag, char *lm, int pre)
 {
 	t_types num;
+	char	conv;
 
+	conv = recup_conv(flag);
 	num.ll = va_arg(*args, long long);
 	if (!lm)
 	{

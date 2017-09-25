@@ -22,7 +22,8 @@ char		*add_flag(char *ret, char *flag, char conv, int *tab)
 		{
 			if ((conv == 'o' || conv == 'O') && ft_strcmp(ret, "0"))
 				ret = ft_strjoin_free("0", ret, 'r');
-			else if ((conv == 'x' || conv == 'X' ) && ft_strcmp(ret, "0") && ft_strcmp(ret, ""))
+			else if ((conv == 'x' || conv == 'X') &&\
+			ft_strcmp(ret, "0") && ft_strcmp(ret, ""))
 				ret = ft_strjoin_free((conv == 'x' ? "0x" : "0X"), ret, 'r');
 		}
 		else if (conv == 'b')
@@ -30,9 +31,11 @@ char		*add_flag(char *ret, char *flag, char conv, int *tab)
 	}
 	if (conv == 'd' || conv == 'D' || conv == 'i' || conv == 'e' || conv == 'E')
 	{
-		if (ft_strchr(flag, '+') && !ft_strchr(ret, '-') && (ft_strchr(flag, '-') || !ft_strchr(flag, '0') || tab[0] < (int)ft_strlen(ret)))
+		if (ft_strchr(flag, '+') && !ft_strchr(ret, '-') && (ft_strchr(flag,\
+		'-') || !ft_strchr(flag, '0') || tab[0] < (int)ft_strlen(ret)))
 			ret = ft_strjoin_free("+", ret, 'r');
-		else if (ft_strchr(flag, ' ') && !ft_strchr(ret, '-') && tab[0] < (int)ft_strlen(ret))
+		else if (ft_strchr(flag, ' ') && !ft_strchr(ret, '-') &&\
+		tab[0] < (int)ft_strlen(ret))
 			ret = ft_strjoin_free(" ", ret, 'r');
 	}
 	return (ret = add_minw(ret, flag, conv, tab));
@@ -47,7 +50,7 @@ char		*add_minw(char *ret, char *flag, char conv, int *tab)
 		else if (ft_strchr(flag, '0') && tab[1] < 0)
 		{
 			if (ft_strchr(flag, '#') && (int)(ft_strlen(ret) + 2) == tab[0] &&\
-				(conv == 'x' || conv == 'X' ) && ft_strcmp(ret, "0"))
+				(conv == 'x' || conv == 'X') && ft_strcmp(ret, "0"))
 				ret = ft_strjoin_free((conv == 'x' ? "0x" : "0X"), ret, 'r');
 			else if ((conv == 'd' || conv == 'D'))
 				ret = minw_decimal(ret, flag, tab[0]);
@@ -90,7 +93,8 @@ char		*add_pre(char *ret, char conv, int pre)
 	neg = (ft_strchr(ret, '-') != NULL ? 1 : 0);
 	if (pre < 0 || pre < (int)ft_strlen(ret))
 		return (ret);
-	else if (conv == 'd' || conv == 'D' || conv == 'i' || conv == 'u' || conv == 'x' || conv == 'X')
+	else if (conv == 'd' || conv == 'D' || conv == 'i' ||\
+	conv == 'u' || conv == 'x' || conv == 'X')
 	{
 		if (neg)
 			*ft_strchr(ret, '-') = '0';
@@ -101,7 +105,7 @@ char		*add_pre(char *ret, char conv, int pre)
 	}
 	else if (conv == 'p')
 	{
-		ret = ft_strdup(ret + 2); //leaks
+		ret = ft_strdup(ret + 2);
 		while ((int)ft_strlen(ret) < pre)
 			ret = ft_strjoin_free("0", ret, 'r');
 		ret = ft_strjoin_free("0x", ret, 'r');
