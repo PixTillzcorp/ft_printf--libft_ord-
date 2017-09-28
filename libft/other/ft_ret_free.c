@@ -14,6 +14,7 @@
 
 int		ft_ret_free(void *data, int ret)
 {
-	ft_memdel(&data);
+	if (data)
+		ft_memdel(&data);
 	return (ret);
 }

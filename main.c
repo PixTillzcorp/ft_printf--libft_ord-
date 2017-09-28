@@ -3,9 +3,8 @@
 int		main(void)
 {
 	ft_printf("@moulitest: %.d %.0d", 0, 0);
-	printf("@moulitest: %.d %.0d", 0, 0);
-	// ft_printf("\n");
-	// ft_printf("%%\n");
+	ft_printf("\n");
+	ft_printf("%l%\n");
 	// ft_printf("%d\n", 42);
 	// ft_printf("%d%d\n", 42, 41);
 	// ft_printf("%d%d%d\n", 42, 43, 44);

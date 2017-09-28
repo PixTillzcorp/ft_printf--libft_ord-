@@ -81,9 +81,8 @@ int				other_conv(va_list *args, char *flag, char *lm, int *tab)
 		return (ft_helpflag());
 	else
 		return (0);
-	ret = add_flag(ret, flag, conv, tab);
-	ft_putstr(ret);
-	if (flag)
-		ft_memdel((void **)&flag);
+	ft_putstr((ret = add_flag(ret, flag, conv, tab)));
+	if (lm)
+		ft_memdel((void **)&lm);
 	return ((!ret ? 0 : ft_strlen(ret)));
 }

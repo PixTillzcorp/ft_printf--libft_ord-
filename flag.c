@@ -28,16 +28,16 @@ int			flag_conv(const char **fmt, va_list *args, char *flag, int *tab)
 	{
 		flag = ft_chrjoin_free(flag, **fmt, 1);
 		(*fmt)++;
-		return (convert(args, flag, lm, tab));
+		return (ft_ret_free(flag, convert(args, flag, lm, tab)));
 	}
 	else if (**fmt == '%')
 	{
-		ret = add_flag(ft_strdup("%"), flag, '%', tab);
-		ft_putstr(ret);
+		ft_putstr((ret = add_flag(ft_strdup("%"), flag, '%', tab)));
+		free(flag);
 		(*fmt)++;
-		return (ft_strlen(ret));
+		return (ft_ret_free(lm, ft_ret_free(ret, ft_strlen(ret))));
 	}
-	return (no_conv(fmt, flag, tab[0]));
+	return (ft_ret_free(lm, ft_ret_free(flag, no_conv(fmt, flag, tab[0]))));
 }
 
 int			flag_minw(const char **format)

@@ -76,10 +76,9 @@ int			convert(va_list *args, char *flag, char *lm, int *tab)
 	}
 	else if (ft_isconv(conv))
 		return (other_conv(args, ft_chrjoin_free(flag, conv, 0), lm, tab));
-	ret = add_flag(ret, flag, conv, tab);
-	ft_putstr(ret);
-	if (flag)
-		ft_memdel((void **)&flag);
+	ft_putstr((ret = add_flag(ret, flag, conv, tab)));
+	if (lm)
+		ft_memdel((void **)&lm);
 	return ((!ret ? 0 : ft_ret_free(ret, ft_strlen(ret))));
 }
 
