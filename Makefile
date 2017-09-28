@@ -32,7 +32,7 @@ LIB_SRCO = 	ft_itoa.o ft_atoi.o ft_litoa.o ft_dbltoa.o ft_ulitoa.o			\
 			ft_chrjoin_free.o ft_strjoin_free.o ft_strdup_free.o			\
 			ft_bzero.o ft_memcpy.o ft_memchr.o ft_memcmp.o ft_memset.o		\
 			ft_memdel.o ft_memccpy.o ft_memmove.o ft_memalloc.o				\
-			ft_ret_free.o ft_strchange.o ft_nbrlen.o
+			ft_ret_free.o ft_strchange.o ft_nbrlen.o ft_retstr_free.o
 
 SRCO_SUB = objfiles
 

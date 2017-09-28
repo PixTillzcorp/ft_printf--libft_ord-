@@ -120,10 +120,10 @@ SRCC_CONV = ft_itoa.c ft_atoi.c ft_litoa.c ft_dbltoa.c ft_ulitoa.c			\
 			ft_ldec_to_base.c
 
 SRCO_OTHR =	ft_charswap.o ft_pow.o ft_swap.o ft_wstrlen.o ft_wcharlen.o		\
-			ft_ret_free.o ft_nbrlen.o
+			ft_ret_free.o ft_nbrlen.o ft_retstr_free.o
 
 SRCC_OTHR = ft_charswap.c ft_pow.c ft_swap.c ft_wstrlen.c ft_wcharlen.c		\
-			ft_ret_free.c ft_nbrlen.c
+			ft_ret_free.c ft_nbrlen.c ft_retstr_free.c
 
 #Compiler flags
 

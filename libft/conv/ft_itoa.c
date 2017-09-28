@@ -53,7 +53,5 @@ char				*ft_itoa(int n)
 	while (nb.mod > 0)
 		str = ft_strfromnum(str, &nb);
 	str[nb.i] = '\0';
-	if (str == NULL)
-		return (0);
 	return (str);
 }

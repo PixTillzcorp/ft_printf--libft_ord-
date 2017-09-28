@@ -88,6 +88,7 @@ char				*ft_ulitoa(unsigned long long nbr);
 char				*ft_strndup(const char *str, int n);
 char				*ft_strchange(char *old, char *new);
 char				**ft_strsplit(char const *s, char c);
+char				*ft_retstr_free(void *data, char *ret);
 char				*ft_strcpy(char *dest, const char *src);
 char				*ft_strcat(char *dest, const char *src);
 char				*ft_strmap(char const *s, char (*f)(char));
