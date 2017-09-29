@@ -87,10 +87,7 @@ int			ft_printf(const char *format, ...)
 			len += choice(&format, &args);
 		}
 		else
-		{
-			len++;
-			ft_putchar(*(format++));
-		}
+			len += ft_ret_putchar(*(format++));
 	}
 	va_end(args);
 	return (len);
