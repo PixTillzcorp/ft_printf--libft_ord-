@@ -72,7 +72,7 @@ int			string(char *str, char *flag, int minw, int pre)
 	i = 0;
 	len = 0;
 	if (str == NULL)
-		str = ft_strdup("(null)");
+		str = "(null)";
 	strl = ft_strlen(str);
 	if (minw > (pre >= 0 && pre < strl ? pre : strl) && !ft_strchr(flag, '-'))
 	{

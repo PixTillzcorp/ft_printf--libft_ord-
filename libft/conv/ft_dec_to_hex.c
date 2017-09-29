@@ -19,13 +19,13 @@ char		*ft_dec_to_hex(unsigned int nbr, char type, int pre)
 	int		maj_min;
 
 	rest = 0;
-	ret = ft_strdup("");
 	if (type != 'x' && type != 'X')
-		return (NULL);
+		return (ft_strdup(""));
 	else if (!nbr && !pre)
-		return (NULL);
+		return (ft_strdup(""));
 	else if (!nbr)
-		return ("0");
+		return (ft_strdup("0"));
+	ret = ft_strdup("");
 	maj_min = (type == 'x' ? 97 : 65);
 	while (nbr)
 	{

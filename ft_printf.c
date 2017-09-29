@@ -75,10 +75,9 @@ int			ft_printf(const char *format, ...)
 	len = 0;
 	tmp = ft_strdup(format);
 	va_start(args, format);
-	if (!check_wsc(args, tmp))
+	if (!ft_ret_free(tmp, check_wsc(args, tmp)))
 		return (-1);
 	va_end(args);
-	free(tmp);
 	va_start(args, format);
 	while (*format)
 	{

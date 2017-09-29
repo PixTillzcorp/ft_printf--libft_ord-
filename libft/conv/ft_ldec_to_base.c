@@ -19,20 +19,20 @@ char					*ft_ldec_to_base(unsigned long long nbr,\
 	char				*ret;
 
 	rest = 0;
-	ret = ft_strdup("");
 	if (!nbr)
 	{
 		if (!pre)
-			return (NULL);
-		return ("0");
+			return (ft_strdup(""));
+		return (ft_strdup("0"));
 	}
+	ret = ft_strdup("");
 	while (nbr)
 	{
 		rest = nbr % base;
 		nbr = nbr / base;
 		ret = ft_chrjoin_free(ret, (48 + rest), 1);
 	}
-	ret = ft_strrev(ret);
+	ret = ft_retstr_free(ret, ft_strrev(ret));
 	while ((int)ft_strlen(ret) + (ft_strchr(flag, '#') ? 1 : 0) < pre)
 		ret = ft_strjoin_free("0", ret, 'r');
 	return (ret);

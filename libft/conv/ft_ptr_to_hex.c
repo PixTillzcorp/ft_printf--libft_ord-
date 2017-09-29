@@ -28,8 +28,8 @@ char	*ft_ptr_to_hex(void *ptr)
 		if (rest >= 10)
 			ret = ft_chrjoin_free(ret, (97 + (rest % 10)), 1);
 		else
-			ret = ft_strjoin_free(ret, ft_itoa(rest), 'l');
+			ret = ft_strjoin_free(ret, ft_itoa(rest), 'b');
 	}
 	ret = ft_strjoin_free(ret, "x0", 'l');
-	return (ft_strrev(ret));
+	return (ft_retstr_free(ret, ft_strrev(ret)));
 }

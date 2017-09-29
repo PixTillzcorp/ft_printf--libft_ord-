@@ -67,8 +67,9 @@ int				other_conv(va_list *args, char *flag, char *lm, int *tab)
 	char		conv;
 
 	conv = recup_conv(flag);
+	ret = NULL;
 	if (conv == 'o' || conv == 'O')
-		ret = base_swap_oct(args, ft_chrjoin_free(flag, conv, 0), lm, tab[1]);
+		ret = base_swap_oct(args, flag, lm, tab[1]);
 	else if (conv == 'x' || conv == 'X')
 		ret = base_swap_hex(args, lm, tab[1], conv);
 	else if (conv == 'e' || conv == 'E')
@@ -79,10 +80,8 @@ int				other_conv(va_list *args, char *flag, char *lm, int *tab)
 		ret = ptr(args, flag, tab[0], tab[1]);
 	else if (conv == 'H')
 		return (ft_helpflag());
-	else
-		return (0);
 	ft_putstr((ret = add_flag(ret, flag, conv, tab)));
 	if (lm)
 		ft_memdel((void **)&lm);
-	return ((!ret ? 0 : ft_strlen(ret)));
+	return ((!ret ? 0 : ft_ret_free(ret, ft_strlen(ret))));
 }

@@ -42,15 +42,18 @@ int			flag_conv(const char **fmt, va_list *args, char *flag, int *tab)
 
 int			flag_minw(const char **format)
 {
+	char	*conv;
 	int		ret;
 
 	ret = 0;
+	conv = NULL;
 	if (!ft_isdigit(**format))
 		return (0);
 	else
 	{
 		ret = ft_atoi(*format);
-		*format += ft_strlen(ft_itoa(ret));
+		conv = ft_itoa(ret);
+		*format += ft_ret_free(conv, ft_strlen(conv));
 		return (ret);
 	}
 }
