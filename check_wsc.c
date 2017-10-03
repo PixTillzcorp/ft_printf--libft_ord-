@@ -72,8 +72,6 @@ int				other_conv(va_list *args, char *flag, char *lm, int *tab)
 		ret = base_swap_oct(args, flag, lm, tab[1]);
 	else if (conv == 'x' || conv == 'X')
 		ret = base_swap_hex(args, lm, tab[1], conv);
-	else if (conv == 'e' || conv == 'E')
-		ret = base_swap_sci(args, lm, tab[1], conv);
 	else if (conv == 'b')
 		ret = base_swap_bin(args, lm);
 	else if (conv == 'p')

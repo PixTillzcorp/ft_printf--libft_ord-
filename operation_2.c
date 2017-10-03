@@ -27,17 +27,6 @@ char		*base_swap_bin(va_list *args, char *lm)
 		return (NULL);
 }
 
-char		*base_swap_sci(va_list *args, char *lm, int pre, char conv)
-{
-	t_types num;
-
-	num.dbl = va_arg(*args, double);
-	if (!lm)
-		return (ft_dec_to_sci(num.dbl, conv, pre));
-	else
-		return (NULL);
-}
-
 int			chrct(va_list *args, char *flag, char *lm, int minw)
 {
 	t_types num;

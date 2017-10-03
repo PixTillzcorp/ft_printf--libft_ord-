@@ -38,7 +38,6 @@ int			ft_isconv(const char tag)
 	ret += (tag == 'c' || tag == 'C' ? 1 : 0);
 	ret += (tag == 'x' || tag == 'X' ? 1 : 0);
 	ret += (tag == 'o' || tag == 'O' ? 1 : 0);
-	ret += (tag == 'e' || tag == 'E' ? 1 : 0);
 	ret += (tag == 'p' || tag == 'i' ? 1 : 0);
 	ret += (tag == 'U' || tag == 'u' ? 1 : 0);
 	ret += (tag == 'b' || tag == 'H' ? 1 : 0);
